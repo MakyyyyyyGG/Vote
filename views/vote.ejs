@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CPU Battle</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <%- include('../templates/header.ejs'); %>
+  <link rel="icon" href="favicon.png">
+  <script src="socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+<body>
+  	<span hidden id="span_url"><%= socketURL %></span>
+		<div class="container">
+			<h1 id="title">CPU Battle</h1>
+			<div class="box" id="box-intel">
+				<h1>Intel</h1>
+				<img src="intel-logo-2022.png" alt="">
+				<button type="submit" id="btn_intel" placeholder="Vote"><span>Submit</span></button>
+			</div>
+			<div class="box" id="box-ryzen">
+				<h1>Ryzen</h1>
+				<img src="AMD_Logo.png" alt="">
+				<button type="submit" id="btn_ryzen" placeholder="Vote"><span>Submit</span></button>
+			</div>
+		</div>
+	<script type="text/javascript">
+		var socket= io.connect($("#span_url").html());
+
+		$("#btn_intel").click(function(){
+			socket.emit('vote_intel', '1');
+			socket.emit('vote_ryzen', '0');
+			alert("vote done for Intel.");
+		});
+		$("#btn_ryzen").click(function(){
+			socket.emit('vote_intel', '0');
+			socket.emit('vote_ryzen', '1');
+			alert("vote done for Ryzen.");
+		});
+	</script>
+</body>
+</html>
