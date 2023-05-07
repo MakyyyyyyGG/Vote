@@ -12,11 +12,11 @@ app.use(express.static('public'));
 
 app.set("view engine", "ejs");
 
-app.get("/vote", function(req, res){
-res.render("pages/vote", {socketURL:defURL});
+app.get("/", function(req, res){
+res.render("vote", {socketURL:defURL});
 });
-app.get("/result", function(req, res){
-res.render("pages/result", {socketURL:defURL});
+app.get("", function(req, res){
+res.render("result", {socketURL:defURL});
 });
 
 io.sockets.on('connection', function(socket){
