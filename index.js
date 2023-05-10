@@ -6,7 +6,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 // const PORT = process.end.PORT || 8000;
 
-const defURL = "http://localhost:8000/vote"
+const defURL = "https://vote-group8.onrender.com"
 
 app.use(express.static('public'));
 
